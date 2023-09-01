@@ -20,6 +20,7 @@ resource "aws_instance" "hi-main-server" {
     key_name = "hi-key"
     associate_public_ip_address = false
     source_dest_check = false
+    
     tags = {
         Name = "hi-main-server"
     }
