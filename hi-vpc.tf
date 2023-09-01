@@ -25,8 +25,8 @@ resource "aws_subnet" "hi-public-subnet-2a" {
 }
 
 ## Create Subnet Private
-resource "aws_subnet" "sms-private-subnet-2a" {
-    vpc_id = aws_vpc.sms-vpc.id
+resource "aws_subnet" "hi-private-subnet-2a" {
+    vpc_id = aws_vpc.hi-vpc.id
     cidr_block = "192.168.16.0/20"
     map_public_ip_on_launch = false
     availability_zone = data.aws_availability_zones.available.names[0]
