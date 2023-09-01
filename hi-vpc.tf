@@ -1,6 +1,7 @@
-data "aws_availablity_zones" "available" {
+data "aws_availability_zones" "available" {
     state = "available"
 }
+
 
 resource "aws_vpc" "hi-vpc"{
     cidr_block = "192.168.0.0/16"
