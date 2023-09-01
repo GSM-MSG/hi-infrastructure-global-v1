@@ -1,7 +1,7 @@
 resource "aws_instance" "hi-bastion" {
     ami = "ami-0d5d9d301c853a04a"
     instance_type = "t2.micro"
-    subnet_id =  "${aws_subnet.hi-public-subnet.id}"
+    subnet_id =  "${aws_subnet.hi-public-subnet-2a.id}"
     vpc_security_gruop_ids = [aws_security_group.hi-main-server-sg.id]
     key_name = "hi-key"
     association_public_ip_address = false
