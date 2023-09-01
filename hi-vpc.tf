@@ -53,7 +53,7 @@ resource "aws_eip" "nat_ip" {
 # Create Nat Gateway
 
 resource "aws_nat_gateway" "hi-nat" {
-    allocation_id = aws.eip.nat_ip.id
+    allocation_id = aws_eip.nat_ip.id
     subnet_id = aws_subnet.hi-public-subnet-2a.id
 
     tags = {
@@ -69,6 +69,15 @@ resource "aws_route_table" "hi-public-rtb" {
 
     tags = {
         Name = "hi-public-rtb"
+    }
+}
+
+## Create Private Route Table
+resource "aws_route_table" "hi-private-rtb" {
+    vpc_id = aws_vpc.hi-vpc.id
+
+    tags = {
+        Name = "hi-private-rtb"
     }
 }
 
