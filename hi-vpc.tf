@@ -20,8 +20,20 @@ resource "aws_subnet" "hi-public-subnet-2a" {
     cidr_block = "192.168.0.0/20"
     map_public_ip_on_launch = true
     availability_zone = data.aws_availability_zones.available.names[0]
+
     tags = {
         "Name" = "hi-public-subnet-2a"
+    }
+}
+
+resource "aws_subnet" "hi-public-subnet-2b" {
+    vpc_id = aws_vpc.hi-vpc.id
+    clidr_block = "192.168.32.0/20"
+    map_public_ip_on_launch = true
+    availability_zone = data.aws_availability_zones.available.names[1]
+
+    tags = {
+        "Name" = "hi-public-subnet-2b"
     }
 }
 
@@ -31,8 +43,21 @@ resource "aws_subnet" "hi-private-subnet-2a" {
     cidr_block = "192.168.16.0/20"
     map_public_ip_on_launch = false
     availability_zone = data.aws_availability_zones.available.names[0]
+
     tags = {
         "Name" = "sms-private-subnet-2a"
+    }
+}
+
+resource "aws_subent" "hi-private-subnet-2b" {
+    vpc_id = aws_vpc.hi-vpc.id
+    cidr_block = "192.168.48.0/20"
+    map_public_ip_on_launch = false 
+
+    availability_zone = data.aws_availability_zones.available.names[1]
+
+    tags = {
+        "Name" = "hi-private-subnet-2b"
     }
 }
 
@@ -89,9 +114,19 @@ resource "aws_route_table_association" "hi-public-rt-association-1" {
     route_table_id = aws_route_table.hi-public-rtb.id
 }
 
+resource "aws_route_table_association" "hi-public-rt-association-2" {
+    subnet_id = aws_subnet.hi-public-subnet-2b.id
+    route_table_id = aws_route_table.hi-public-rtb.id
+}
+
 ## Private Subnet Register RTB 
 resource "aws_route_table_association" "hi-private-rt-association-1" {
     subnet_id = aws_subnet.hi-private-subnet-2a.id
+    route_table_id = aws_route_table.hi-private-rtb.id
+}
+
+resource "aws_route_table_association" "hi-private-rt-association-2" {
+    subnet_id = aws_subnet.hi-private-subnet-2b.id
     route_table_id = aws_route_table.hi-private-rtb.id
 }
 
