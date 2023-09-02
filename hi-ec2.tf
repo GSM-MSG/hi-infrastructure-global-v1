@@ -4,8 +4,6 @@ resource "aws_instance" "hi-bastion" {
     subnet_id =  "${aws_subnet.hi-public-subnet-2a.id}"
     vpc_security_group_ids = [aws_security_group.hi-bastion-sg.id]
     key_name = "hi-key"
-    associate_public_ip_address = false
-    source_dest_check = false
 
     tags = {
         Name = "hi-bastion"
