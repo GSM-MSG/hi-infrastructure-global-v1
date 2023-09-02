@@ -8,7 +8,7 @@ resource "aws_instance" "hi-bastion" {
     source_dest_check = false
 
     tags = {
-        Name = "hi-main-server"
+        Name = "hi-bastion"
     }
 }
 
