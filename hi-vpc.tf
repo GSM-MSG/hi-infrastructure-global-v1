@@ -28,7 +28,7 @@ resource "aws_subnet" "hi-public-subnet-2a" {
 
 resource "aws_subnet" "hi-public-subnet-2b" {
     vpc_id = aws_vpc.hi-vpc.id
-    clidr_block = "192.168.32.0/20"
+    cidr_block = "192.168.32.0/20"
     map_public_ip_on_launch = true
     availability_zone = data.aws_availability_zones.available.names[1]
 
@@ -49,7 +49,7 @@ resource "aws_subnet" "hi-private-subnet-2a" {
     }
 }
 
-resource "aws_subent" "hi-private-subnet-2b" {
+resource "aws_subnet" "hi-private-subnet-2b" {
     vpc_id = aws_vpc.hi-vpc.id
     cidr_block = "192.168.48.0/20"
     map_public_ip_on_launch = false 
